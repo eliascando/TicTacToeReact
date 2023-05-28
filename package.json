@@ -1,7 +1,6 @@
 {
   "name": "tictactoe",
   "private": true,
-  "homepage": "https://eliascando.github.io/TicTacToeReact/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
