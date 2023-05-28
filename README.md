@@ -24,3 +24,4 @@ Luego en la consola se debe ejecutar el proyecto usando npm en modo desarrollado
 ```
   npm run start
 ```
+> **Nota:** Debe tener instalado Git y NodeJS para poder instalar las dependencias y ejecutar el proyecto
