@@ -1,14 +1,13 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Fredericka+the+Great&family=Irish+Grover&family=Roboto:wght@300&family=Sofia&family=Titan+One&display=swap');
+
+:root{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
+  background: #394867;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -99,8 +98,8 @@ body {
 
 .winner .text {
   background: #111;
-  height: 300px;
-  width: 320px;
+  height: 450px;
+  width: 350px;
   border: 2px solid #eee;
   border-radius: 10px;
   display: flex;
@@ -128,4 +127,114 @@ body {
   place-items: center;
   cursor: pointer;
   font-size: 48px;
+}
+
+.pantallaInicial{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.opciones{
+  background: #6b6b8b;
+  padding: 30px;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+
+.opcion{
+  font-family: 'Irish Grover', cursive;
+  display: block;
+  border-radius: 75px;
+  background: #212A3E;
+  width: 450px;
+  padding: 10px;
+  border-style: none;
+  align-items: center;
+  text-align: center;
+  line-height: 200%;
+  text-decoration: none;
+  font-size: 250%;
+  margin: auto auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: white;
+}
+.opcion:hover{
+  background: #6f95ff;
+  cursor: pointer;
+  
+}
+.tituloModoJuego{
+  font-family: 'Fredericka the Great', cursive;
+  text-align: center;
+  font-size: 200%;
+  margin: auto auto;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  color: #dce0e6;
+  line-height: 10px;
+}
+.tituloTictactoe{
+  font-family: 'Titan One', cursive;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5%;
+  font-size: 450%;
+  color: #200e38;
+  background: #FFF8D6;
+}
+
+.nombres{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
+  border-radius: 20px;
+  background: #09f;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+}
+.nombre1{
+  background: #200e38;
+}
+.nombre2{
+  background: #6b6b8b;
+}
+.nombreJugador{
+  padding: 10px;
+  margin-top: 0px;
+}
+.volverButon{
+  display: block;
+  padding: 0;
+}
+.empezarButon{
+  display: block;
+}
+.simbolo{
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.avisoOnline{
+  margin: 10px;
+  text-align: center;
+
+  padding-top: 50%;
+  margin-bottom: 10px;
+}
+.botonOnline{
+  width: 100px;
+  padding: 20px;
+  color: black;
+  background: #09f;
+  border-style: none;
+  border-radius: 15px;
+  margin: auto;
+  margin-left: 40%;
+}
+.botonOnline:hover{
+  background: #200e38;
+  color: white;
+  cursor: pointer;
 }

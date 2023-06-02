@@ -1,7 +1,7 @@
 import { Square } from "./Square"
 
 // eslint-disable-next-line react/prop-types
-export function WinnerModal({winner, resetGame}) {
+export function WinnerModal({nameWiner, winner, resetGame}) {
     if(winner === null) return null
 
     const winnerText = winner === false ? 'Empate' : 'Ganó:'
@@ -10,6 +10,7 @@ export function WinnerModal({winner, resetGame}) {
         <section className="winner">
             <div className="text">
             <h2>{winnerText}</h2>
+            <h2>{winner !== true &&nameWiner}</h2>
             <header className="win">
                 {
                     winner && <Square>{winner}</Square>
