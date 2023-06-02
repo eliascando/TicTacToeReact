@@ -23,30 +23,32 @@ export const ElegirModoJuego = () => {
           <h1 className="tituloTictactoe">TicTacToe</h1>
             <div className='opciones'>
                 <h1 className="tituloModoJuego">ELIJA JUGAR CONTRA</h1>
-                <button
-                    className='opcion'
-                    onClick={() => {
-                    setHaElegidoModo(true);
-                    setModoJuego('multiplayer');
-                    guardarModoJuego('multiplayer');
-                    }}
-                >Un amigo 👯</button>
-                <button
-                    className='opcion'
-                    onClick={() => {
-                    setHaElegidoModo(true);
-                    setModoJuego('online');
-                    guardarModoJuego('online');
-                    }}
-                >Alguien Online 🌏</button>
-                <button
-                    className='opcion'
-                    onClick={() => {
-                    setHaElegidoModo(true);
-                    setModoJuego('ia');
-                    guardarModoJuego('ia');
-                    }}
-                >La Máquina 🤖</button>
+                <div className='botonesModo'>
+                  <button
+                      className='opcion'
+                      onClick={() => {
+                      setHaElegidoModo(true);
+                      setModoJuego('multiplayer');
+                      guardarModoJuego('multiplayer');
+                      }}
+                  >Un amigo 👯</button>
+                  <button
+                      className='opcion'
+                      onClick={() => {
+                      setHaElegidoModo(true);
+                      setModoJuego('online');
+                      guardarModoJuego('online');
+                      }}
+                  >Alguien Online 🌏</button>
+                  <button
+                      className='opcion'
+                      onClick={() => {
+                      setHaElegidoModo(true);
+                      setModoJuego('ia');
+                      guardarModoJuego('ia');
+                      }}
+                  >La Máquina 🤖</button>
+                </div>
             </div>
         </div>
       )}

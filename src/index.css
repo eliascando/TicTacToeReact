@@ -301,12 +301,21 @@ body {
   .opciones{
     padding: 10px;
     margin: 10px;
+    width: 350px;
+    height: 500px;
+    margin: auto;
+  }
+  .botonesModo{
+    padding-top: 10px;
+    margin-top: 5%;
   }
   .tituloModoJuego{
-    font-size: 125%;
-    padding: 8px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    font-size: 250%;
+    line-height: 40px;
+    padding: 0;
+    padding-top: 0px;
+    margin-top: 40px;
+
   }
   .pantallaInicial {
     position: absolute;
@@ -314,5 +323,40 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     align-items: center;
+  }
+  .setNames{
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 1);
+  }
+  .setNames .text {
+    background: #111;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .board {
+    width: fit-content;
+    margin: 40% auto;
+    text-align: center;
+  }
+  .nombre1{
+    background: #200e38;
+    max-width:30% ;
+  }
+  .nombre2{
+    background: #6b6b8b;
+    max-width:30% ;
   }
 }
