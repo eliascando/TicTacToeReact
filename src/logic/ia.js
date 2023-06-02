@@ -2,9 +2,10 @@ import { TURNS } from "../constants";
 import { checkWinerFrom } from "./board";
 
 const EMPTY_CELL = null;
-const MAX_DEPTH = 8;
+const MAX_DEPTH = 1000;
 
-const evaluationCache = new Map();
+const evaluationCache = {};
+
 
 export const aiMove = (currentBoard) => {
   let bestScore = -Infinity;
@@ -14,7 +15,7 @@ export const aiMove = (currentBoard) => {
   for (let i = 0; i < moves.length; i++) {
     const move = moves[i];
     currentBoard[move] = TURNS.O;
-    let score = minimax(currentBoard, 0, false, -Infinity, Infinity);
+    const score = -alphabeta(currentBoard, 0, -Infinity, Infinity, false);
     currentBoard[move] = EMPTY_CELL;
 
     if (score === 1) {
@@ -30,27 +31,27 @@ export const aiMove = (currentBoard) => {
   return bestMove;
 };
 
-const minimax = (currentBoard, depth, isMaximizing, alpha, beta) => {
+const alphabeta = (currentBoard, depth, alpha, beta, isMaximizing) => {
   const result = checkWinerFrom(currentBoard);
 
   if (result !== null) {
     if (result === TURNS.O) {
       return 1 - depth;
     } else if (result === TURNS.X) {
-      return -1 + depth;
+      return depth - 1;
     } else if (result === "tie") {
       return 0;
     }
   }
 
   if (depth >= MAX_DEPTH) {
-    const cachedScore = evaluationCache.get(currentBoard);
+    const cachedScore = evaluationCache[currentBoard];
     if (cachedScore !== undefined) {
       return cachedScore;
     }
 
     const score = evaluateBoard(currentBoard, isMaximizing);
-    evaluationCache.set(currentBoard, score);
+    evaluationCache[currentBoard] = score;
     return score;
   }
 
@@ -61,15 +62,16 @@ const minimax = (currentBoard, depth, isMaximizing, alpha, beta) => {
     for (let i = 0; i < moves.length; i++) {
       const move = moves[i];
       currentBoard[move] = TURNS.O;
-      let score = minimax(currentBoard, depth + 1, false, alpha, beta);
+      const score = alphabeta(currentBoard, depth + 1, alpha, beta, false);
       currentBoard[move] = EMPTY_CELL;
 
       bestScore = Math.max(score, bestScore);
       alpha = Math.max(alpha, score);
-      if (beta <= alpha) {
+      if (alpha >= beta) {
         break;
       }
     }
+
     return bestScore;
   } else {
     let bestScore = Infinity;
@@ -78,15 +80,16 @@ const minimax = (currentBoard, depth, isMaximizing, alpha, beta) => {
     for (let i = 0; i < moves.length; i++) {
       const move = moves[i];
       currentBoard[move] = TURNS.X;
-      let score = minimax(currentBoard, depth + 1, true, alpha, beta);
+      const score = alphabeta(currentBoard, depth + 1, alpha, beta, true);
       currentBoard[move] = EMPTY_CELL;
 
       bestScore = Math.min(score, bestScore);
       beta = Math.min(beta, score);
-      if (beta <= alpha) {
+      if (alpha >= beta) {
         break;
       }
     }
+
     return bestScore;
   }
 };
@@ -129,6 +132,8 @@ const evaluateBoard = (currentBoard, isMaximizing) => {
         score += EVALUATION_FACTORS[i][j];
       } else if (currentBoard[j] === TURNS.X) {
         score -= EVALUATION_FACTORS[i][j];
+      } else {
+        score += evaluateMove(currentBoard, j, isMaximizing);
       }
     }
   }
@@ -140,4 +145,18 @@ const evaluateBoard = (currentBoard, isMaximizing) => {
   }
 
   return score;
+};
+
+const evaluateMove = (currentBoard, move, isMaximizing) => {
+  const tempBoard = currentBoard.slice();
+  tempBoard[move] = isMaximizing ? TURNS.O : TURNS.X;
+  const tempResult = checkWinerFrom(tempBoard);
+
+  if (tempResult === TURNS.O) {
+    return 1;
+  } else if (tempResult === TURNS.X) {
+    return -1;
+  }
+
+  return 0;
 };

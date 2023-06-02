@@ -13,10 +13,12 @@ export const SetNameModal = ({
     let nombre1 = '';
     let nombre2 = '';
     const empezarJuego = () => {
-        setPlayerName1(nombre1);
         let nombre2Guardar = modoJuego === 'ia' ? 'Máquina 🤖' : nombre2;
-        setPlayerName2(nombre2Guardar);
-        saveNamesToStorage({ nombre1, nombre2: nombre2Guardar });
+        if(nombre1 && nombre2Guardar){
+            setPlayerName1(nombre1);
+            setPlayerName2(nombre2Guardar);
+            saveNamesToStorage({ nombre1, nombre2: nombre2Guardar });
+        }
       };      
 
     const cancelarPartida = () =>{
@@ -31,10 +33,10 @@ export const SetNameModal = ({
         if(playerName1 !== '' && playerName2 !== '') return
     }
     return(
-        <section className="winner">
+        <section className="setNames">
         <div className="text">
-        <h2>{nombreModo}</h2>
-        <input className="nombreJugador" type="text" onChange={(e)=>{nombre1 = e.target.value, console.log(nombre1)}} placeholder="Ingrese su nombre"/> <div className="simbolo">✖️</div>
+        <h2 className="ingresenNombres">{nombreModo}</h2>
+        <input className="nombreJugador" type="text" onChange={(e)=>{nombre1 = e.target.value}} placeholder="Ingrese su nombre"/> <div className="simbolo">✖️</div>
         {modoJuego == 'multiplayer' && (
             <>
             <input name="nombre2" className="nombreJugador" type="text" onChange={(e)=>{nombre2 = e.target.value}} placeholder="Ingrese su nombre"/> <p className="simbolo">⭕</p>
